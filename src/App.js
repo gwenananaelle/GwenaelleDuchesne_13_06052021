@@ -1,11 +1,12 @@
 import React from 'react';
 import NavigationBar from './components/NavigationBar';
-// import { Counter } from './features/counter/Counter';
+import Hero from './components/Hero';
 
 function App() {
   return (
     <>
     <NavigationBar />
+    <Hero />
     </>
   );
 }
