@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
@@ -12,7 +13,19 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App />} />
+                <Route
+                    path="*"
+                    element={
+                        <main style={{ padding: '1rem' }}>
+                            <p>There's nothing here!</p>
+                        </main>
+                    }
+                />
+            </Routes>
+        </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );
