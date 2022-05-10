@@ -6,8 +6,8 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import { faSignOut } from '@fortawesome/free-solid-svg-icons'
 
 function NavigationBar() {
-    const firstName = useSelector(state => state.users.firstName)
-    const isLoggedIn = useSelector(state => state.users.isLoggedIn)
+    const firstName = useSelector((state) => state.users.user.firstName)
+    const isLoggedIn = useSelector((state) => state.users.user.isLoggedIn)
     return (
         <nav className="main-nav">
             <Link className="main-nav-logo" to={``}>
