@@ -1,5 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { loginMock, getProfileMock } from '../../api/argentBankAPI'
+import {
+    loginMock,
+    getProfileMock,
+    updateProfileMock,
+} from '../../api/argentBankAPI'
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(loginAsync(user))`. This
@@ -7,14 +11,22 @@ import { loginMock, getProfileMock } from '../../api/argentBankAPI'
 // code can then be executed and other actions can be dispatched. Thunks are
 // typically used to make async requests.
 export const loginAsync = createAsyncThunk('user/login', async (user) => {
-    const response = await loginMock({ user })
+    const response = await loginMock(user)
     // The value we return becomes the `fulfilled` action payload
     return response.body
 })
 export const getProfileAsync = createAsyncThunk(
     'user/profile',
     async (token) => {
-        const response = await getProfileMock({ token })
+        const response = await getProfileMock(token)
+        return response.body
+    }
+)
+export const updateProfileAsync = createAsyncThunk(
+    'user/update',
+    async ({ token, user }) => {
+        console.log(user)
+        const response = await updateProfileMock(token, user)
         return response.body
     }
 )
@@ -52,6 +64,15 @@ export const usersSlice = createSlice({
                 state.user.isLoggedIn = true
             })
             .addCase(getProfileAsync.fulfilled, (state, action) => {
+                state.status = 'succeeded'
+                state.user.firstName = action.payload.firstName
+                state.user.lastName = action.payload.lastName
+                state.user.email = action.payload.email
+                state.user.createdAt = action.payload.createdAt
+                state.user.updatedAt = action.payload.updatedAt
+                state.user.id = action.payload.id
+            })
+            .addCase(updateProfileAsync.fulfilled, (state, action) => {
                 state.status = 'succeeded'
                 state.user.firstName = action.payload.firstName
                 state.user.lastName = action.payload.lastName

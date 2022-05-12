@@ -31,3 +31,22 @@ export function getProfileMock(token) {
         setTimeout(() => resolve(response), 500)
     })
 }
+
+export function updateProfileMock(token, { firstName, lastName }) {
+    console.log(`token: ${token} firstName: ${firstName} lastName: ${lastName}`)
+    return new Promise((resolve) => {
+        const response = {
+            status: 200,
+            message: 'Successfully updated user profile data',
+            body: {
+                email: 'tony@stark.com',
+                firstName: 'Paolo',
+                lastName: 'Paolotito',
+                createdAt: '2022-05-01T20:30:45.950Z',
+                updatedAt: '2022-05-12T12:38:10.627Z',
+                id: '626eedf524f19943759f89a0',
+            },
+        }
+        setTimeout(() => resolve(response), 500)
+    })
+}
