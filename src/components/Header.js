@@ -27,38 +27,39 @@ function Header() {
     let userInfo
     if (isUpdating) {
         userInfo = (
-            <form onSubmit={handleSubmit} onReset={handleReset}>
-                <div className="input-wrapper">
-                    <label htmlFor="firstName">FirstName</label>
-                    <input
-                        name="firstName"
-                        autoComplete="firstName"
-                        type="text"
-                        id="firstName"
-                        placeholder={firstName}
-                        value={newFirstName}
-                        onChange={(e) => setNewFirstName(e.target.value)}
-                    />
-                </div>
-                <div className="input-wrapper">
-                    <label htmlFor="lastName">lastName</label>
-                    <input
-                        name="lastName"
-                        autoComplete="lastName"
-                        type="text"
-                        id="lastName"
-                        placeholder={lastName}
-                        value={newLastName}
-                        onChange={(e) => setNewLastName(e.target.value)}
-                    />
-                </div>
-                <button className="sign-in-button" type="submit">
-                    Save
-                </button>
-                <button className="sign-in-button" type="reset">
-                    Cancel
-                </button>
-            </form>
+            <>
+                <h1>Welcome back</h1>
+                <form onSubmit={handleSubmit} onReset={handleReset}>
+                    <div className="edit-wrapper">
+                        <input
+                            name="firstName"
+                            autoComplete="firstName"
+                            type="text"
+                            id="firstName"
+                            placeholder={firstName}
+                            value={newFirstName}
+                            onChange={(e) => setNewFirstName(e.target.value)}
+                        />
+                        <input
+                            name="lastName"
+                            autoComplete="lastName"
+                            type="text"
+                            id="lastName"
+                            placeholder={lastName}
+                            value={newLastName}
+                            onChange={(e) => setNewLastName(e.target.value)}
+                        />
+                    </div>
+                    <div className="btn-wrapper">
+                        <button className="edit-button" type="submit">
+                            Save
+                        </button>
+                        <button className="edit-button" type="reset">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </>
         )
     } else {
         userInfo = (
