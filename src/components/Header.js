@@ -14,8 +14,8 @@ function Header() {
     async function handleSubmit(e) {
         e.preventDefault()
         const user = {
-            firstName: newFirstName,
-            lastName: newLastName,
+            firstName: newFirstName || firstName,
+            lastName: newLastName || lastName,
         }
         console.log(user)
         dispatch(updateProfileAsync({ token, user }))

@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import {
-    loginMock,
-    getProfileMock,
-    updateProfileMock,
+    login,
+    getUserProfile,
+    updateUserProfile,
 } from '../../api/argentBankAPI'
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -11,14 +11,14 @@ import {
 // code can then be executed and other actions can be dispatched. Thunks are
 // typically used to make async requests.
 export const loginAsync = createAsyncThunk('user/login', async (user) => {
-    const response = await loginMock(user)
+    const response = await login(user)
     // The value we return becomes the `fulfilled` action payload
     return response.body
 })
 export const getProfileAsync = createAsyncThunk(
     'user/profile',
     async (token) => {
-        const response = await getProfileMock(token)
+        const response = await getUserProfile(token)
         return response.body
     }
 )
@@ -26,7 +26,7 @@ export const updateProfileAsync = createAsyncThunk(
     'user/update',
     async ({ token, user }) => {
         console.log(user)
-        const response = await updateProfileMock(token, user)
+        const response = await updateUserProfile(token, user)
         return response.body
     }
 )
