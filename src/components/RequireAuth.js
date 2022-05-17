@@ -6,12 +6,12 @@ function RequireAuth({ children }) {
     const dispatch = useDispatch()
     const isLoggedIn = useSelector((state) => state.users.user.isLoggedIn)
     const token = useSelector((state) => state.users.user.token)
-    if (!isLoggedIn) {
-        // Redirect them to the /login page
 
+    if (!isLoggedIn) {
         return <Navigate to="/login" replace />
+    } else {
+        dispatch(getProfileAsync(token))
     }
-    dispatch(getProfileAsync(token))
     return children
 }
 export default RequireAuth
