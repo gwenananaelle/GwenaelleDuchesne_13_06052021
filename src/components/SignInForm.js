@@ -37,7 +37,8 @@ function SignInForm() {
                         <input
                             name="email"
                             autoComplete="username"
-                            type="text"
+                            type="email"
+                            required
                             id="username"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -49,6 +50,7 @@ function SignInForm() {
                             name="password"
                             autoComplete="current-password"
                             type="password"
+                            required
                             id="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
