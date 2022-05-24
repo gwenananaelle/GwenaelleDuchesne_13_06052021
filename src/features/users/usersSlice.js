@@ -12,7 +12,6 @@ import {
 // typically used to make async requests.
 export const loginAsync = createAsyncThunk('user/login', async (user) => {
     const response = await login(user)
-    // The value we return becomes the `fulfilled` action payload
     return response.body
 })
 export const getProfileAsync = createAsyncThunk(
@@ -25,7 +24,6 @@ export const getProfileAsync = createAsyncThunk(
 export const updateProfileAsync = createAsyncThunk(
     'user/update',
     async ({ token, user }) => {
-        console.log(user)
         const response = await updateUserProfile(token, user)
         return response.body
     }
